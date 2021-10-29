@@ -4,7 +4,7 @@ import './Calculator.css';
 function TitleApp() {
     return (
         <h1 className="TitleApp">
-            
+            SPLI<br/>TTER
         </h1>
     )
 }
