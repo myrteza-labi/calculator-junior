@@ -1,7 +1,7 @@
 import React from 'react'
 import './Calculator.css'; 
 
-function TitleApp() {
+function TitleApp(props) {
     return (
         <h1 className="TitleApp">
             SPLI<br/>TTER

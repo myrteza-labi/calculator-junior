@@ -1,9 +1,9 @@
 import React from 'react'
 import './Calculator.css'; 
 
-function InputIcon() {
+function InputIcon(props) {
     return (
-        <img src="" alt="" className="InputIcon" />
+        <img src={props.src} alt={props.alt} className="InputIcon" />
     )
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import './Calculator.css'; 
 
-function Percent() {
+function Percent(props) {
     return (
-        <p className="Percent">
-            
-        </p>
+        <button className="Percent">
+            {props.number}
+        </button>
     )
 }
 

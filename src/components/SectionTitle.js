@@ -1,9 +1,11 @@
 import React from 'react'
 import './Calculator.css'; 
 
-function SectionTitle() {
+function SectionTitle(props) {
     return (
-        <h2 className="SectionTitle"></h2>
+        <h2 className="SectionTitle">
+            {props.title}
+        </h2>
     )
 }
 
