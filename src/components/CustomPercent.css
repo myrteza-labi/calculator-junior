@@ -14,3 +14,8 @@
     font-weight: 700; 
     color: #547878;
 }
+
+.CustomPercent.active{
+    background-color: #26C2AE; 
+    color: #00474B; 
+}

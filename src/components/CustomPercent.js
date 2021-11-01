@@ -3,7 +3,7 @@ import './CustomPercent.css';
 
 function CustomPercent(props) {
     return (
-        <button className="CustomPercent">
+        <button className={"CustomPercent "+ props.active }>
             Custom
         </button>
     )

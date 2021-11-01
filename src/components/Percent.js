@@ -3,7 +3,7 @@ import './Percent.css';
 
 function Percent(props) {
     return (
-        <button className="Percent">
+        <button className={"Percent " + props.active}>
             {props.number}%
         </button>
     )

@@ -11,3 +11,8 @@
     font-weight: 400; 
     color: #fff;
 }
+
+.Percent.active{
+    background-color: #26C2AE; 
+    color: #00474B; 
+}

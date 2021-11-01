@@ -6,12 +6,12 @@ import CustomPercent from './CustomPercent';
 function PercentContainer(props) {
     return (
         <div className="PercentContainer">
-            <Percent number={5}/>
-            <Percent number={10}/>
-            <Percent number={15}/>
-            <Percent number={25}/>
-            <Percent number={50}/>
-            <CustomPercent/>
+            <Percent active={""} number={5}/>
+            <Percent active={""} number={10}/>
+            <Percent active={"active"} number={15}/>
+            <Percent active={""} number={25}/>
+            <Percent active={""} number={50}/>
+            <CustomPercent active={""}/>
         </div>
     )
 }
