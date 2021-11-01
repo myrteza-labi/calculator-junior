@@ -1,0 +1,10 @@
+.TextError {
+    display: none; 
+}
+
+.TextError.error {
+    display: block; 
+    font-size: 16px; 
+    font-weight: 700; 
+    color: #E17457;
+}

@@ -16,3 +16,14 @@
     background-color: #26C2AE; 
     color: #00474B; 
 }
+
+/* desktop style */
+@media screen and (min-width: 1440px){
+    .Percent {
+        width: 115px; 
+    }
+    .Percent:hover {
+        background: #9FE8DF;
+        color: #00474B;
+        }
+}   

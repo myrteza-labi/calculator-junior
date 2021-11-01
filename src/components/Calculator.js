@@ -6,16 +6,18 @@ import PercentContainer from './PercentContainer';
 import ResultBox from './ResultBox'; 
 import personIcon from '../images/icon-person.svg'; 
 import dollarIcon from '../images/icon-dollar.svg'
+import TextError from './TextError'; 
 
 
 function Calculator(props) {
     return (
         <section className="Calculator">
+
             <div className="calculatorMainContent">
 
                 <div className="titleAndInput titleAndInputFirst ">
                     <SectionTitle title={"Bill"}/>
-                    <Input src={dollarIcon} alt={"icon dollars"}/>
+                    <Input active={"active "} src={dollarIcon} alt={"icon dollars"}/>
                 </div>
                 
                 
@@ -26,11 +28,15 @@ function Calculator(props) {
                 </div>
                 
                 <div className="titleAndInput">
-                    <SectionTitle title={"Number of People"}/>
-                    <Input src={personIcon} alt={"icon d'une personne"}/>
+                    <div className="ErrorTextCtn">
+                        <SectionTitle title={"Number of People"}/>
+                        <TextError error={"error"}/>
+                    </div>
+                    <Input src={personIcon} active={" "} error={"error "} alt={"icon d'une personne"}/>
                 </div>
                 
             </div>
+            
             <ResultBox/>
         </section>
     )

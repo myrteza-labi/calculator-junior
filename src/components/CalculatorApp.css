@@ -6,3 +6,12 @@
     background-color: #C5E4E7; 
 }
 
+/* desktop style */
+@media screen and (min-width: 1440px){
+    .CalculatorApp {
+        width: 1440px; 
+        min-height: 1024px; 
+        justify-content: center; 
+    }
+    
+}

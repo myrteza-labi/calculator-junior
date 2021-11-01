@@ -21,10 +21,31 @@
     margin: 0; 
 }
 
+.ErrorTextCtn{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+}
+
 /* desktop style */
 @media screen and (min-width: 1440px){
     .Calculator {
+        width: 920px; 
         display: flex; 
         flex-direction: row; 
+        justify-content: space-between; 
+        padding: 42px; 
+        border-radius: 25px; 
+        margin: 85px 0 0 0; 
+    }
+    .calculatorMainContent{
+        min-width: 380px; 
+        width: 380px; 
+    }
+    .titleAndInput {
+        margin: 40px 0 0 0; 
+    }
+    .titleAndInputFirst {
+        margin: 0; 
     }
 }

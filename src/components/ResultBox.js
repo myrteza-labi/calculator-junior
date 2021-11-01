@@ -12,7 +12,7 @@ function ResultBox(props) {
         <section className="ResultBox">
             <Result titleBy={"Tip Amount"} amount={falseAmount1}/>
             <Result titleBy={"Total"} amount={falseAmount2}/>
-            <ResetButton/>
+            <ResetButton empty={""}/>
         </section>
     )
 }

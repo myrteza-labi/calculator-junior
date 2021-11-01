@@ -7,7 +7,7 @@
     border: none; 
     border-radius: 5px; 
     background-color: #F3F9FA; 
-
+    border: solid 2px #F3F9FA; 
     text-align: right; 
     font-family: 'Space Mono', monospace;
     font-size: 24px; 
@@ -15,7 +15,23 @@
     color: #547878;
 }
 
+
 .CustomPercent.active{
-    background-color: #26C2AE; 
-    color: #00474B; 
+    border: 2px solid #26C2AE;
 }
+
+
+/* desktop style */
+@media screen and (min-width: 1440px){
+
+    .CustomPercent {
+        width: 115px; 
+        text-align: center; 
+        padding: 0; 
+    }
+
+    .CustomPercent.active{
+        width: 115px; 
+    }
+
+}   
