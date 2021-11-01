@@ -12,12 +12,24 @@ function Calculator(props) {
     return (
         <section className="Calculator">
             <div className="calculatorMainContent">
-                <SectionTitle title={"Bill"}/>
-                <Input src={dollarIcon} alt={"icon dollars"}/>
+
+                <div className="titleAndInput titleAndInputFirst ">
+                    <SectionTitle title={"Bill"}/>
+                    <Input src={dollarIcon} alt={"icon dollars"}/>
+                </div>
+                
+                
+
+                <div className="titleAndInput">
                 <SectionTitle title={"Select tip %"}/>
                 <PercentContainer/>
-                <SectionTitle title={"Number of People"}/>
-                <Input src={personIcon} alt={"icon d'une personne"}/>
+                </div>
+                
+                <div className="titleAndInput">
+                    <SectionTitle title={"Number of People"}/>
+                    <Input src={personIcon} alt={"icon d'une personne"}/>
+                </div>
+                
             </div>
             <ResultBox/>
         </section>

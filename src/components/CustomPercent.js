@@ -1,10 +1,10 @@
 import React from 'react'
-import './Calculator.css'; 
+import './CustomPercent.css'; 
 
 function CustomPercent(props) {
     return (
         <button className="CustomPercent">
-            CUSTOM
+            Custom
         </button>
     )
 }

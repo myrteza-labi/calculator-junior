@@ -1,0 +1,9 @@
+.ResultBox {
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    margin: 32px 0 0 0; 
+    padding: 0 24px 24px 24px; 
+    background-color: #00474B; 
+    border-radius: 15px; 
+}

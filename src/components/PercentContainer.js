@@ -1,5 +1,5 @@
 import React from 'react'
-import './Calculator.css'; 
+import './PercentContainer.css'; 
 import Percent from './Percent'; 
 import CustomPercent from './CustomPercent'; 
 

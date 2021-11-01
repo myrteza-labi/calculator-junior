@@ -1,5 +1,5 @@
 import React from 'react'
-import './Calculator.css'; 
+import './ResultBox.css'; 
 import Result from './Result'; 
 import ResetButton from './ResetButton'; 
 
