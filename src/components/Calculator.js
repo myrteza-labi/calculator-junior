@@ -18,7 +18,12 @@ class Calculator extends  React.Component {
             percent : 5 , 
             tipAmount : 0, 
             total : 0, 
-            error : " error ", 
+            error : " ", 
+            active : 
+            [
+                " test ",
+                " test2",
+            ],
             percentActive : 
                 [
                     {
@@ -32,6 +37,8 @@ class Calculator extends  React.Component {
                 ]
         }
         this.initialState = this.state; 
+        this.initialArrayActive = this.state.active; 
+
         this.getBillValue = this.getBillValue.bind(this); 
         this.handleInputChange = this.handleInputChange.bind(this)
 
@@ -80,6 +87,9 @@ class Calculator extends  React.Component {
         }
         else {
             if(e.target.value == 0 || e.target.value.length == 0){
+                this.setState({
+                    error : " error ", 
+                })
                 console.log("Can't be 0")
             } 
             else {
@@ -95,9 +105,7 @@ class Calculator extends  React.Component {
     }
 
 
-    handleInputClick(e){ 
-        /*this.makeTheCalcul(); */
-    }
+    
 
     makeTheCalcul(){
         let bill = this.state.bill; 
@@ -114,6 +122,12 @@ class Calculator extends  React.Component {
         if(tipAmount===Infinity){
             return 
         }
+        else if(isNaN(tipAmount)){
+            tipAmount = 0; 
+            this.setState({
+                tipAmount : tipAmount, 
+            })
+        }
         else {
             this.setState({
                 tipAmount : tipAmount.toFixed(2), 
@@ -124,6 +138,12 @@ class Calculator extends  React.Component {
 
         if(total===Infinity){
             return 
+        }
+        else if(isNaN(total)){
+            total = 0; 
+            this.setState({
+                total : total, 
+            })
         }
         else {
             this.setState({
@@ -218,6 +238,29 @@ class Calculator extends  React.Component {
 
 
 
+    handleInputClick(e){ 
+        let typeName = e.target.dataset.name
+        let number = typeName=== "bill"? 0 : 1; 
+        let initialArray = this.initialArrayActive; 
+        let newArray = initialArray.slice(); 
+
+        newArray[number] = "active "; 
+
+        if(typeName==="person" && e.target.value == 0){
+            console.log('person')
+            this.setState({
+                error : " error ", 
+            })
+        }
+
+        this.setState({
+            active : initialArray, 
+        })
+        this.setState({
+            active : newArray, 
+        })
+    }
+
  
     render(){
         return (
@@ -227,7 +270,7 @@ class Calculator extends  React.Component {
     
                     <div className="titleAndInput titleAndInputFirst ">
                         <SectionTitle title={"Bill"}/>
-                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"bill"} active={"active "} src={dollarIcon} alt={"icon dollars"}/>
+                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"bill"} active={this.state.active[0]} src={dollarIcon} alt={"icon dollars"}/>
                     </div>
                     
                     
@@ -242,7 +285,7 @@ class Calculator extends  React.Component {
                             <SectionTitle title={"Number of People"}/>
                             <TextError error={this.state.error}/>
                         </div>
-                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"person"} src={personIcon} active={" "} error={this.state.error} alt={"icon d'une personne"}/>
+                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"person"} src={personIcon} active={this.state.active[1]} error={this.state.error} alt={"icon d'une personne"}/>
                     </div>
                     
                 </div>
