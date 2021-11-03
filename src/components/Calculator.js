@@ -32,7 +32,7 @@ class Calculator extends  React.Component {
                         fifteen : " ",
                         twentyfive : " ",
                         fifty : " ",
-                        custome : " ",
+                        custom : " ",
                     }, 
                 ]
         }
@@ -50,6 +50,11 @@ class Calculator extends  React.Component {
         this.makeTheCalcul = this.makeTheCalcul.bind(this)
 
         this.handleResetClick = this.handleResetClick.bind(this)
+
+        this.handleCustomChange = this.handleCustomChange.bind(this)
+
+
+        
 
 
 
@@ -160,18 +165,17 @@ class Calculator extends  React.Component {
         const fifteen = 15; 
         const twentyfive = 25; 
         const fifty = 50; 
-        const custom = "custom"
-
+        const custom = "custom"; 
 
         const newArray = this.state.percentActive.slice(); 
         const defaultArray = [
             {
-                five : "  ",
+                five : " ",
                 ten : " ",
                 fifteen : " ",
                 twentyfive : " ",
                 fifty : " ",
-                custome : " ",
+                custom : " ",
             }, 
         ]
         
@@ -181,39 +185,36 @@ class Calculator extends  React.Component {
         })
         
 
-        if (e.target.value == five){
+        if (e.target.dataset.name == "five"){
             newArray[0] = defaultArray; 
             newArray[0].five = " active "
         }
-        else if (e.target.value == ten){
+        else if (e.target.dataset.name == "ten"){
             newArray[0] = defaultArray; 
             newArray[0].ten = " active "
         }
-        else if (e.target.value == fifteen){
+        else if (e.target.dataset.name == "fifteen"){
             newArray[0] = defaultArray; 
             newArray[0].fifteen = " active "
         }
-        else if (e.target.value == twentyfive){
+        else if (e.target.dataset.name == "twentyfive"){
             newArray[0] = defaultArray; 
             newArray[0].twentyfive = " active "
         }
-        else if (e.target.value == fifty){
+        
+        else if (e.target.dataset.name == "fifty"){
             newArray[0] = defaultArray; 
             newArray[0].fifty = " active "
+        }
+        else if (e.target.dataset.name === "custom"){
+            newArray[0] = defaultArray; 
+            newArray[0].custom = " active "
+        }
+        else {
+            return
         }
 
-        else if (e.target.value == fifty){
-            newArray[0] = defaultArray; 
-            newArray[0].fifty = " active "
-        }
-
-        /*
-        else if (e.target.value === "custom "){
-            console.log(e.target.value)
-            newArray[0] = defaultArray; 
-            newArray[0].fifty = " active "
-        }
-        */
+        console.log(newArray)
 
 
         this.setState({
@@ -222,9 +223,11 @@ class Calculator extends  React.Component {
 
         this.setState({
             percent : e.target.value, 
-        },()=> {console.log(this.state.percent)})
+        }, ()=> {
+            this.makeTheCalcul()
+        })
 
-        /*  function test  */this.makeTheCalcul()
+        /*  function test  */
     }
 
     handleResetClick(){
@@ -261,6 +264,19 @@ class Calculator extends  React.Component {
         })
     }
 
+
+    handleCustomChange(e){
+        let value = e.target.value; 
+        console.log(value); 
+        this.setState({
+            percent : value, 
+        }, ()=> {
+            this.makeTheCalcul()
+        })
+
+        
+    }
+
  
     render(){
         return (
@@ -277,7 +293,7 @@ class Calculator extends  React.Component {
     
                     <div className="titleAndInput">
                     <SectionTitle title={"Select tip %"}/>
-                    <PercentContainer percentActive={this.state.percentActive} onPercentClick={this.handlePercentClick}/>
+                    <PercentContainer onCustomChange={this.handleCustomChange} percentActive={this.state.percentActive} onPercentClick={this.handlePercentClick}/>
                     </div>
                     
                     <div className="titleAndInput">

@@ -16,6 +16,15 @@
 }
 
 
+.CustomPercent:focus {
+    border: none; 
+    outline : none; 
+}
+.CustomPercent:focus::placeholder {
+    color: transparent; 
+}
+
+
 .CustomPercent.active{
     border: 2px solid #26C2AE;
 }

@@ -3,9 +3,7 @@ import './CustomPercent.css';
 
 function CustomPercent(props) {
     return (
-        <button className={"CustomPercent "+ props.active}>
-            Custom
-        </button>
+        <input onChange={props.onChange} onClick={props.onClick} data-name={"custom"} type="number" className={"CustomPercent "+ props.active} placeholder="Custom"/>
     )
 }
 
