@@ -3,10 +3,14 @@ import './Input.css';
 import InputIcon from './InputIcon'; 
 
 function Input(props) {
+    
     return (
-        <div className={"Input " + props.active + props.error}>
+        <div onClick={props.onClick}
+            
+                
+            className={"Input " + props.active + props.error} >
             <InputIcon src={props.src} alt={props.alt}/>
-            <input type="number" className="inputElement" />
+            <input onChange={props.onChange} data-name={props["data-name"]} type="number" className="inputElement" />
         </div>
     )
 }

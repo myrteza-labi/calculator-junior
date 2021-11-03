@@ -4,13 +4,14 @@ import Percent from './Percent';
 import CustomPercent from './CustomPercent'; 
 
 function PercentContainer(props) {
+    let percentActive = props.percentActive[0]; 
     return (
         <div className="PercentContainer">
-            <Percent active={"active"} number={5}/>
-            <Percent active={""} number={10}/>
-            <Percent active={""} number={15}/>
-            <Percent active={""} number={25}/>
-            <Percent active={""} number={50}/>
+            <Percent onClick={props.onPercentClick} active={percentActive.five} value={5}/>
+            <Percent onClick={props.onPercentClick} active={percentActive.ten} value={10}/>
+            <Percent onClick={props.onPercentClick} active={percentActive.fifteen} value={15}/>
+            <Percent onClick={props.onPercentClick} active={percentActive.twentyfive} value={25}/>
+            <Percent onClick={props.onPercentClick} active={percentActive.fifty} value={50}/>
             <CustomPercent  active={"active "}/>
         </div>
     )

@@ -5,15 +5,14 @@ import ResetButton from './ResetButton';
 
 function ResultBox(props) {
 
-    let falseAmount1 = "$4.27"
-    let falseAmount2 = "$32.79"
-
+    let tipAmount = props.tipAmount; 
+    let total = props.total; 
     return (
         <section className="ResultBox">
-            <Result titleBy={"Tip Amount"} amount={falseAmount1}/>
-            <Result titleBy={"Total"} amount={falseAmount2}/>
-            <ResetButton empty={""}/>
-        </section>
+            <Result titleBy={"Tip Amount"} amount={tipAmount}/>
+            <Result titleBy={"Total"} amount={total}/>
+            <ResetButton onClick={props.onResetClick} empty={" "}/>
+        </section> 
     )
 }
 
