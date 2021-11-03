@@ -10,7 +10,7 @@ function Input(props) {
                 
             className={"Input " + props.active + props.error} >
             <InputIcon src={props.src} alt={props.alt}/>
-            <input onChange={props.onChange} data-name={props["data-name"]} type="number" className="inputElement" />
+            <input onChange={props.onChange} data-name={props["data-name"]} type="number" className="inputElement" autocomplete="off"/>
         </div>
     )
 }

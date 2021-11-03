@@ -12,7 +12,7 @@ function PercentContainer(props) {
             <Percent onClick={props.onPercentClick} active={percentActive.fifteen} value={15}/>
             <Percent onClick={props.onPercentClick} active={percentActive.twentyfive} value={25}/>
             <Percent onClick={props.onPercentClick} active={percentActive.fifty} value={50}/>
-            <CustomPercent  active={"active "}/>
+            <CustomPercent  active={percentActive.custome} value={"custom "} />
         </div>
     )
 }

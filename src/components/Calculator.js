@@ -13,12 +13,12 @@ class Calculator extends  React.Component {
     constructor(props){
         super(props); 
         this.state= {
-            bill: " ", 
-            nOfPerson : " ", 
+            bill: 0, 
+            nOfPerson : 0, 
             percent : 5 , 
-            tipAmount : " ", 
-            total : " ", 
-            error : " ", 
+            tipAmount : 0, 
+            total : 0, 
+            error : " error ", 
             percentActive : 
                 [
                     {
@@ -31,6 +31,7 @@ class Calculator extends  React.Component {
                     }, 
                 ]
         }
+        this.initialState = this.state; 
         this.getBillValue = this.getBillValue.bind(this); 
         this.handleInputChange = this.handleInputChange.bind(this)
 
@@ -40,6 +41,9 @@ class Calculator extends  React.Component {
         this.handlePercentClick = this.handlePercentClick.bind(this)
 
         this.makeTheCalcul = this.makeTheCalcul.bind(this)
+
+        this.handleResetClick = this.handleResetClick.bind(this)
+
 
 
         
@@ -61,22 +65,71 @@ class Calculator extends  React.Component {
     }
 
     handleInputChange(e){
-        let inputName = this.getInputName(e)
+        let inputName = this.getInputName(e); 
+
+        if(e.key == 48){
+            console.log('zero cliqué')
+        }
+
         if(inputName==="bill"){
             this.setState({
-                bill : e.target.value
+                bill : parseFloat(e.target.value),
+            }, ()=> {
+                this.makeTheCalcul();
             })
         }
         else {
-            this.setState({
-                nOfPerson : e.target.value
-            })
+            if(e.target.value == 0 || e.target.value.length == 0){
+                console.log("Can't be 0")
+            } 
+            else {
+                this.setState({
+                    error : " ", 
+                    nOfPerson : parseFloat(e.target.value),
+                },()=> {
+                    this.makeTheCalcul();
+                })
+            }
         }
+        //this.makeTheCalcul();
     }
 
+
     handleInputClick(e){ 
-        console.log(this.state.percentActive[0].five)
-        this.makeTheCalcul(); 
+        /*this.makeTheCalcul(); */
+    }
+
+    makeTheCalcul(){
+        let bill = this.state.bill; 
+        let nOfPerson = this.state.nOfPerson; 
+        let percent = this.state.percent; 
+        let tipAmount = this.state.tipAmount; 
+        let total = this.state.total; 
+
+
+        tipAmount = (percent * bill / 100) / nOfPerson ; 
+
+        console.log(typeof tipAmount)
+
+        if(tipAmount===Infinity){
+            return 
+        }
+        else {
+            this.setState({
+                tipAmount : tipAmount.toFixed(2), 
+            })
+        }
+        
+        total = bill / nOfPerson + tipAmount  === Infinity ? " " : bill / nOfPerson + tipAmount; 
+
+        if(total===Infinity){
+            return 
+        }
+        else {
+            this.setState({
+                total : total.toFixed(2), 
+            })
+        }
     }
 
 
@@ -87,6 +140,9 @@ class Calculator extends  React.Component {
         const fifteen = 15; 
         const twentyfive = 25; 
         const fifty = 50; 
+        const custom = "custom"
+
+
         const newArray = this.state.percentActive.slice(); 
         const defaultArray = [
             {
@@ -125,6 +181,21 @@ class Calculator extends  React.Component {
             newArray[0] = defaultArray; 
             newArray[0].fifty = " active "
         }
+
+        else if (e.target.value == fifty){
+            newArray[0] = defaultArray; 
+            newArray[0].fifty = " active "
+        }
+
+        /*
+        else if (e.target.value === "custom "){
+            console.log(e.target.value)
+            newArray[0] = defaultArray; 
+            newArray[0].fifty = " active "
+        }
+        */
+
+
         this.setState({
             percentActive : newArray,
         })
@@ -132,28 +203,20 @@ class Calculator extends  React.Component {
         this.setState({
             percent : e.target.value, 
         },()=> {console.log(this.state.percent)})
+
+        /*  function test  */this.makeTheCalcul()
     }
 
-    makeTheCalcul(){
-        let bill = this.state.bill; 
-        let nOfPerson = this.state.nOfPerson; 
-        let percent = this.state.percent; 
-        let tipAmount = ""; 
-        let total = ""; 
-
-        tipAmount = (percent * bill / 100) / nOfPerson ; 
-
-        this.setState({
-            tipAmount : tipAmount.toString(), 
-        })
-        
-        total = bill / nOfPerson + tipAmount  === Infinity ? " " : bill / nOfPerson + tipAmount ; 
-
-        this.setState({
-            total : total.toString(), 
-        })
+    handleResetClick(){
+        this.setState(this.initialState)
+        let inputs = document.getElementsByTagName('input')
+        console.log(inputs) 
+        inputs[0].value = " "; 
+        inputs[1].value = " "; 
 
     }
+
+
 
  
     render(){
@@ -177,14 +240,14 @@ class Calculator extends  React.Component {
                     <div className="titleAndInput">
                         <div className="ErrorTextCtn">
                             <SectionTitle title={"Number of People"}/>
-                            <TextError error={"error"}/>
+                            <TextError error={this.state.error}/>
                         </div>
-                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"person"} src={personIcon} active={" "} error={"error "} alt={"icon d'une personne"}/>
+                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"person"} src={personIcon} active={" "} error={this.state.error} alt={"icon d'une personne"}/>
                     </div>
                     
                 </div>
                 
-                <ResultBox onResetClick={this.handle} tipAmount={this.state.tipAmount} total={this.state.total}/>
+                <ResultBox onResetClick={this.handleResetClick} tipAmount={this.state.tipAmount} total={this.state.total}/>
             </section>
         )
     }

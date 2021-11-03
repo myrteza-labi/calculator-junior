@@ -3,7 +3,7 @@ import './ResetButton.css';
 
 function ResetButton(props) {
     return (
-        <button className={"ResetButton " + props.empty} onClick={props.onClick}>RESET</button>
+        <button  className={"ResetButton " + props.empty} onClick={props.onClick}>RESET</button>
     )
 }
 
