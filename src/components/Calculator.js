@@ -94,6 +94,9 @@ class Calculator extends  React.Component {
             if(e.target.value == 0 || e.target.value.length == 0){
                 this.setState({
                     error : " error ", 
+                    tipAmount : 0, 
+                    total: 0, 
+
                 })
                 console.log("Can't be 0")
             } 
@@ -222,7 +225,7 @@ class Calculator extends  React.Component {
         })
 
         this.setState({
-            percent : e.target.value, 
+            percent : parseFloat(e.target.value), 
         }, ()=> {
             this.makeTheCalcul()
         })
@@ -232,11 +235,12 @@ class Calculator extends  React.Component {
 
     handleResetClick(){
         this.setState(this.initialState)
-        let inputs = document.getElementsByTagName('input')
-        console.log(inputs) 
-        inputs[0].value = " "; 
-        inputs[1].value = " "; 
+        let inputBill = document.getElementById('inputBill')
+        let inputPerson = document.getElementById('inputPerson')
 
+
+        inputBill.value = ""; 
+        inputPerson.value = ""; 
     }
 
 
@@ -286,7 +290,7 @@ class Calculator extends  React.Component {
     
                     <div className="titleAndInput titleAndInputFirst ">
                         <SectionTitle title={"Bill"}/>
-                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"bill"} active={this.state.active[0]} src={dollarIcon} alt={"icon dollars"}/>
+                        <Input id={"inputBill"} onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"bill"} active={this.state.active[0]} src={dollarIcon} alt={"icon dollars"}/>
                     </div>
                     
                     
@@ -301,7 +305,7 @@ class Calculator extends  React.Component {
                             <SectionTitle title={"Number of People"}/>
                             <TextError error={this.state.error}/>
                         </div>
-                        <Input onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"person"} src={personIcon} active={this.state.active[1]} error={this.state.error} alt={"icon d'une personne"}/>
+                        <Input id={"inputPerson"} onClick={this.handleInputClick} onChange={this.handleInputChange} data-name={"person"} src={personIcon} active={this.state.active[1]} error={this.state.error} alt={"icon d'une personne"}/>
                     </div>
                     
                 </div>
