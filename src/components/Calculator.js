@@ -38,42 +38,17 @@ class Calculator extends  React.Component {
         }
         this.initialState = this.state; 
         this.initialArrayActive = this.state.active; 
-
-        this.getBillValue = this.getBillValue.bind(this); 
         this.handleInputChange = this.handleInputChange.bind(this)
-
-
         this.handleInputClick = this.handleInputClick.bind(this)
-
         this.handlePercentClick = this.handlePercentClick.bind(this)
-
         this.makeTheCalcul = this.makeTheCalcul.bind(this)
-
         this.handleResetClick = this.handleResetClick.bind(this)
-
         this.handleCustomChange = this.handleCustomChange.bind(this)
-
-
-        
-
-
-
-        
-
-
-
     }
 
     getInputName(e){
         let typeName = e.target.dataset.name
         return typeName
-    }
-
-    getBillValue(e){
-        /*
-        let name = e.getAttribute("name"); 
-        alert(name)
-        */
     }
 
     handleInputChange(e){
@@ -109,7 +84,6 @@ class Calculator extends  React.Component {
                 })
             }
         }
-        //this.makeTheCalcul();
     }
 
 
@@ -122,10 +96,7 @@ class Calculator extends  React.Component {
         let tipAmount = this.state.tipAmount; 
         let total = this.state.total; 
 
-
         tipAmount = (percent * bill / 100) / nOfPerson ; 
-
-        console.log(typeof tipAmount)
 
         if(tipAmount===Infinity){
             return 
@@ -169,13 +140,6 @@ class Calculator extends  React.Component {
 
 
     handlePercentClick(e){
-        const five = 5; 
-        const ten = 10; 
-        const fifteen = 15; 
-        const twentyfive = 25; 
-        const fifty = 50; 
-        const custom = "custom"; 
-
         const newArray = this.state.percentActive.slice(); 
         const defaultArray = [
             {
@@ -192,7 +156,6 @@ class Calculator extends  React.Component {
             item  = " ok "; 
             console.log(item)
         })
-        
 
         if (e.target.dataset.name == "five"){
             newArray[0] = defaultArray; 
@@ -222,10 +185,7 @@ class Calculator extends  React.Component {
         else {
             return
         }
-
-        console.log(newArray)
-
-
+        
         this.setState({
             percentActive : newArray,
         })
@@ -235,8 +195,6 @@ class Calculator extends  React.Component {
         }, ()=> {
             this.makeTheCalcul()
         })
-
-        /*  function test  */
     }
 
     handleResetClick(){
