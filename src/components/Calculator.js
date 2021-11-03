@@ -21,8 +21,8 @@ class Calculator extends  React.Component {
             error : " ", 
             active : 
             [
-                " test ",
-                " test2",
+                " ",
+                " ",
             ],
             percentActive : 
                 [
@@ -136,6 +136,9 @@ class Calculator extends  React.Component {
                 tipAmount : tipAmount, 
             })
         }
+        else if(tipAmount==0){
+            return
+        }
         else {
             this.setState({
                 tipAmount : tipAmount.toFixed(2), 
@@ -152,6 +155,9 @@ class Calculator extends  React.Component {
             this.setState({
                 total : total, 
             })
+        }
+        else if(tipAmount==0){
+            return
         }
         else {
             this.setState({

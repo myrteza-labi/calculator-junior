@@ -3,7 +3,7 @@ import './CustomPercent.css';
 
 function CustomPercent(props) {
     return (
-        <input maxlength="2" pattern="[0-9]{2}" onChange={props.onChange} onClick={props.onClick} data-name={"custom"} type="text" className={"CustomPercent "+ props.active} placeholder="Custom"/>
+        <input maxLength="2" pattern="[0-9]{2}" onChange={props.onChange} onClick={props.onClick} data-name={"custom"} type="text" className={"CustomPercent "+ props.active} placeholder="Custom"/>
     )
 }
 
